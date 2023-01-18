@@ -22,6 +22,8 @@
 		9FF340D22978681200DEAB40 /* ApiUrlEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D12978681200DEAB40 /* ApiUrlEnum.swift */; };
 		9FF340D4297868AC00DEAB40 /* ProductResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D3297868AC00DEAB40 /* ProductResponseModel.swift */; };
 		9FF340D72978691700DEAB40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D62978691700DEAB40 /* Constants.swift */; };
+		9FF340DA2978781F00DEAB40 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D82978781F00DEAB40 /* LoginViewController.swift */; };
+		9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF340D92978781F00DEAB40 /* LoginViewController.xib */; };
 		E259A34560BD90F6CED40402 /* Pods_ProductsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DD33B48E45849E3C3BA486 /* Pods_ProductsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		9FF340D12978681200DEAB40 /* ApiUrlEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrlEnum.swift; sourceTree = "<group>"; };
 		9FF340D3297868AC00DEAB40 /* ProductResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseModel.swift; sourceTree = "<group>"; };
 		9FF340D62978691700DEAB40 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FF340D82978781F00DEAB40 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9FF340D92978781F00DEAB40 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A9F31B28A3CBC8BD4C6182FA /* Pods-ProductsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsAppTests.release.xcconfig"; path = "Target Support Files/Pods-ProductsAppTests/Pods-ProductsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B8CACC520FCE8521F0979F1A /* Pods_ProductsApp_ProductsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsApp_ProductsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE5184F75BA566F9B105B64 /* Pods-ProductsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp.release.xcconfig"; path = "Target Support Files/Pods-ProductsApp/Pods-ProductsApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 		9FF340C4297823B500DEAB40 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				9FF340D82978781F00DEAB40 /* LoginViewController.swift */,
+				9FF340D92978781F00DEAB40 /* LoginViewController.xib */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */,
 				9FF3409A29781A1D00DEAB40 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +495,7 @@
 				9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */,
 				9FF340D4297868AC00DEAB40 /* ProductResponseModel.swift in Sources */,
 				9FF340D22978681200DEAB40 /* ApiUrlEnum.swift in Sources */,
+				9FF340DA2978781F00DEAB40 /* LoginViewController.swift in Sources */,
 				9FF340D72978691700DEAB40 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
