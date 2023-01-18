@@ -7,6 +7,8 @@ target 'ProductsApp' do
 
   # Pods for ProductsApp
 pod 'Alamofire'
+pod 'MaterialActivityIndicator'
+pod 'SwiftAlertView'
 
   target 'ProductsAppTests' do
     inherit! :search_paths
