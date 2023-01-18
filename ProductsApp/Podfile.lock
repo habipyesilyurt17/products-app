@@ -1,16 +1,24 @@
 PODS:
   - Alamofire (5.6.4)
+  - MaterialActivityIndicator (0.0.6)
+  - SwiftAlertView (2.2.1)
 
 DEPENDENCIES:
   - Alamofire
+  - MaterialActivityIndicator
+  - SwiftAlertView
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - MaterialActivityIndicator
+    - SwiftAlertView
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  MaterialActivityIndicator: 5061a52fadf7d22533734f2d34806311331bc424
+  SwiftAlertView: e61a63206f19e8e3295f13a58d6464fea4a6946a
 
-PODFILE CHECKSUM: 6fe09668cf6aca072e3b334417d2d50e41cf019a
+PODFILE CHECKSUM: 26d4d8c3ddc425f9a8cec9b2b12261261354b0db
 
 COCOAPODS: 1.11.3

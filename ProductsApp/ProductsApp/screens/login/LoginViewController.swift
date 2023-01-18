@@ -7,14 +7,18 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var showPassword = true
+    var viewModel: LoginViewModelProtocol = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePasswordInput()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        viewModel.delegate = self
     }
     
     private func configurePasswordInput() {
@@ -50,6 +54,34 @@ final class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        viewModel.login(username: username, password: password)
     }
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    func handleViewModelOutput(_ output: LoginViewModelOutput) {
+        switch output {
+        case .setLoading(let isLoading):
+            isLoading ? indicator.startAnimating() : indicator.stopAnimating()
+        case .showAlert(let errorMessage):
+            self.showErrorAlert(message: errorMessage) { [weak self] in
+                guard let self = self else { return }
+                self.indicator.stopAnimating()
+            }
+        case .showHomePage(_):
+            let tabBarViewController = TabBarViewController()
+            tabBarViewController.modalPresentationStyle = .overFullScreen
+            self.present(tabBarViewController, animated: true)
+        }
+    }
 }
