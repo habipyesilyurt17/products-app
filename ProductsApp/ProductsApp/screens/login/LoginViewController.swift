@@ -18,6 +18,8 @@ final class LoginViewController: BaseViewController {
         configurePasswordInput()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        //        usernameTextField.text = "mor_2314"
+        //        passwordTextField.text = "83r5^_"
         viewModel.delegate = self
     }
     

@@ -26,20 +26,25 @@ struct NetworkManager: NetworkManagerProtocol {
             "username": username,
             "password": password
         ]
-        let urlString = ApiUrlEnum.login()
-        AF.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { response in
-            switch response.result {
-            case .success(let data):
-                do {
-                    let response = try JSONDecoder().decode(LoginResponseModel.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    completion(.failure(.loginError))
+        if !username.isEmpty && !password.isEmpty {
+            let urlString = ApiUrlEnum.login()
+            AF.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let response = try JSONDecoder().decode(LoginResponseModel.self, from: data)
+                        completion(.success(response))
+                    } catch {
+                        completion(.failure(.loginError))
+                    }
+                case .failure(_):
+                    completion(.failure(.internetError))
                 }
-            case .failure(_):
-                completion(.failure(.internetError))
             }
+        } else {
+            completion(.failure(.userLoginInfoError))
         }
+
     }
     
     func fetchProducts(completion: @escaping (ResultTypeEnum<Product>) -> Void) {
@@ -58,7 +63,6 @@ struct NetworkManager: NetworkManagerProtocol {
             } else {
                 CacheManager.shared.getProducts { products in
                     if let products = products {
-                        print("CacheManager datass")
                         completion(.success(products))
                         return
                     }
@@ -78,10 +82,8 @@ extension NetworkManager: InternetProtocol {
         let queue = DispatchQueue(label: "InternetConnectionMonitor")
         monitor.pathUpdateHandler = { pathUpdateHandler in
             if pathUpdateHandler.status == .satisfied {
-                print("Internet connection is on.")
                 completion(true)
             } else {
-                print("There's no internet connection.")
                 completion(false)
             }
         }

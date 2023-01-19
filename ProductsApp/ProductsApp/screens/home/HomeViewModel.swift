@@ -11,8 +11,10 @@ final class HomeViewModel: ProductViewModelProtocol {
     private var products: Product = []
     private var filteredProducts: Product = []
     
-    func load() {
-        notify(.setLoading(true))
+    func load(isRefresh: Bool) {
+        if !isRefresh {
+            notify(.setLoading(true))
+        }
         NetworkManager.shared.fetchProducts { [weak self] result in
             guard let self = self else { return }
             self.notify(.setLoading(false))
@@ -20,8 +22,8 @@ final class HomeViewModel: ProductViewModelProtocol {
             case .success(let response):
                 self.products = response
                 self.notify(.showProductList(self.products))
-            case .failure(let error):
-                self.notify(.showAlert(error.localizedDescription))
+            case .failure(let errorMessage):
+                self.notify(.showAlert(errorMessage.rawValue))
             }
         }
     }

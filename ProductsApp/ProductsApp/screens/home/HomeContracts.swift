@@ -9,7 +9,7 @@ import Foundation
 
 protocol ProductViewModelProtocol {
     var delegate: ProductViewModelDelegate? { get set }
-    func load()
+    func load(isRefresh: Bool)
     func search(searchText: String)
 }
 
