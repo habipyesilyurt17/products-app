@@ -18,8 +18,8 @@ final class LoginViewModel: LoginViewModelProtocol {
             switch result {
             case .success(_):
                 self.notify(.showHomePage(true))
-            case .failure(let error):
-                self.notify(.showAlert(error.localizedDescription))
+            case .failure(let errorMessage):
+                self.notify(.showAlert(errorMessage.rawValue))
             }
         }
     }
