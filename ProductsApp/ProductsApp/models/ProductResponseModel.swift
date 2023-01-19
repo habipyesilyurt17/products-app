@@ -28,3 +28,5 @@ struct Rating: Decodable {
     let rate: Double
     let count: Int
 }
+
+typealias Product = [ProductResponseModel]

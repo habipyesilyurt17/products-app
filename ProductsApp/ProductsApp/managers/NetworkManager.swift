@@ -10,7 +10,7 @@ import Alamofire
 
 protocol NetworkManagerProtocol {
     func login(username: String, password: String, completion: @escaping (ResultTypeEnum<LoginResponseModel>) -> Void)
-    func fetchProducts(completion: @escaping (ResultTypeEnum<ProductResponseModel>) -> Void)
+    func fetchProducts(completion: @escaping (ResultTypeEnum<Product>) -> Void)
 }
 
 struct NetworkManager: NetworkManagerProtocol {
@@ -37,9 +37,9 @@ struct NetworkManager: NetworkManagerProtocol {
         }
     }
     
-    func fetchProducts(completion: @escaping (ResultTypeEnum<ProductResponseModel>) -> Void) {
+    func fetchProducts(completion: @escaping (ResultTypeEnum<Product>) -> Void) {
         let urlString = ApiUrlEnum.fetchProducts()
-        AF.request(urlString).responseDecodable(of: ProductResponseModel.self) { response in
+        AF.request(urlString).responseDecodable(of: Product.self) { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data))

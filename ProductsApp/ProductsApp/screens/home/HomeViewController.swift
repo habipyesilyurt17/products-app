@@ -7,14 +7,19 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
+    private var products: Product = []
+    
+    var viewModel: ProductViewModelProtocol = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
         configureCollectionView()
+        viewModel.delegate = self
+        viewModel.load()
     }
     
     private func configureSearchBar() {
@@ -34,18 +39,35 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(searchText: searchText)
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        15
+        products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        let product = ProductResponseModel(id: 1, title: "Test Title", price: 123, description: "Test Desc", category: Category.electronics, image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: Rating.init(rate: 4.5, count: 120))
-        cell.configure(product: product)
+        cell.configure(product: products[indexPath.row])
         return cell
+    }
+}
+
+extension HomeViewController: ProductViewModelDelegate {
+    func handleViewModelOutput(_ output: ProductViewModelOutput) {
+        switch output {
+        case .setLoading(let isLoading):
+            isLoading ? indicator.startAnimating() : indicator.startAnimating()
+        case .showAlert(let errorMessage):
+            showErrorAlert(message: errorMessage) { [weak self] in
+                guard let self = self else { return }
+                self.indicator.stopAnimating()
+            }
+        case .showProductList(let products):
+            self.products = products
+            collectionView.reloadData()
+        }
     }
 }

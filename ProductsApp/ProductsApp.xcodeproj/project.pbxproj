@@ -11,6 +11,8 @@
 		9C10B297FBB90D6768885118 /* Pods_ProductsApp_ProductsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CACC520FCE8521F0979F1A /* Pods_ProductsApp_ProductsAppUITests.framework */; };
 		9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */; };
 		9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */; };
+		9FA6287E297922690018BAFE /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287D297922690018BAFE /* HomeContracts.swift */; };
+		9FA628802979243C0018BAFE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287F2979243C0018BAFE /* HomeViewModel.swift */; };
 		9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD3BAF82978A1F3003B991A /* TabBarViewController.swift */; };
 		9FF3409129781A1C00DEAB40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3409029781A1C00DEAB40 /* AppDelegate.swift */; };
 		9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3409229781A1C00DEAB40 /* SceneDelegate.swift */; };
@@ -65,6 +67,8 @@
 		96DD33B48E45849E3C3BA486 /* Pods_ProductsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		9FA6287D297922690018BAFE /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
+		9FA6287F2979243C0018BAFE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9FD3BAF82978A1F3003B991A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9FF3408D29781A1C00DEAB40 /* ProductsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF3409029781A1C00DEAB40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			children = (
 				9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */,
 				9FFB9ABB2978A35A005B6F09 /* HomeViewController.xib */,
+				9FA6287D297922690018BAFE /* HomeContracts.swift */,
+				9FA6287F2979243C0018BAFE /* HomeViewModel.swift */,
 				9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */,
 				9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */,
 			);
@@ -542,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA6287E297922690018BAFE /* HomeContracts.swift in Sources */,
 				9FF340E229788EB500DEAB40 /* BaseViewController.swift in Sources */,
 				9FF340D0297867C300DEAB40 /* ErrorTypeEnum.swift in Sources */,
 				9FF340CC2978647C00DEAB40 /* LoginResponseModel.swift in Sources */,
@@ -557,6 +564,7 @@
 				9FFB9AC82978A3D7005B6F09 /* SavedViewController.swift in Sources */,
 				9FFB9AC02978A372005B6F09 /* CartViewController.swift in Sources */,
 				9FF340DA2978781F00DEAB40 /* LoginViewController.swift in Sources */,
+				9FA628802979243C0018BAFE /* HomeViewModel.swift in Sources */,
 				9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */,
 				9FF340D72978691700DEAB40 /* Constants.swift in Sources */,
 				9FFB9AC42978A388005B6F09 /* SettingsViewController.swift in Sources */,
