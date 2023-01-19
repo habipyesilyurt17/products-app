@@ -9,6 +9,8 @@ target 'ProductsApp' do
 pod 'Alamofire'
 pod 'MaterialActivityIndicator'
 pod 'SwiftAlertView'
+pod 'Cosmos'
+pod 'AlamofireImage'
 
   target 'ProductsAppTests' do
     inherit! :search_paths
