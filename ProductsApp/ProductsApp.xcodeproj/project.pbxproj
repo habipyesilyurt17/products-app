@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		005270A458610718201559CA /* Pods_ProductsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C738D1297A666A863669EA /* Pods_ProductsAppTests.framework */; };
 		9C10B297FBB90D6768885118 /* Pods_ProductsApp_ProductsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CACC520FCE8521F0979F1A /* Pods_ProductsApp_ProductsAppUITests.framework */; };
+		9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */; };
+		9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */; };
 		9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD3BAF82978A1F3003B991A /* TabBarViewController.swift */; };
 		9FF3409129781A1C00DEAB40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3409029781A1C00DEAB40 /* AppDelegate.swift */; };
 		9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3409229781A1C00DEAB40 /* SceneDelegate.swift */; };
@@ -61,6 +63,8 @@
 		36D133E78704C85A36D8566F /* Pods-ProductsApp-ProductsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ProductsApp-ProductsAppUITests/Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77814982B34DFA07F157FD1F /* Pods-ProductsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp.debug.xcconfig"; path = "Target Support Files/Pods-ProductsApp/Pods-ProductsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		96DD33B48E45849E3C3BA486 /* Pods_ProductsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		9FD3BAF82978A1F3003B991A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9FF3408D29781A1C00DEAB40 /* ProductsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF3409029781A1C00DEAB40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			children = (
 				9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */,
 				9FFB9ABB2978A35A005B6F09 /* HomeViewController.xib */,
+				9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */,
+				9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */,
 				9FFB9ABD2978A35A005B6F09 /* HomeViewController.xib in Resources */,
 				9FF3409A29781A1D00DEAB40 /* Assets.xcassets in Resources */,
+				9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */,
 				9FFB9AC12978A372005B6F09 /* CartViewController.xib in Resources */,
 				9FFB9AC52978A388005B6F09 /* SettingsViewController.xib in Resources */,
 				9FFB9AC92978A3D7005B6F09 /* SavedViewController.xib in Resources */,
@@ -553,6 +560,7 @@
 				9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */,
 				9FF340D72978691700DEAB40 /* Constants.swift in Sources */,
 				9FFB9AC42978A388005B6F09 /* SettingsViewController.swift in Sources */,
+				9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
