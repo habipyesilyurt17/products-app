@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		005270A458610718201559CA /* Pods_ProductsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C738D1297A666A863669EA /* Pods_ProductsAppTests.framework */; };
 		9C10B297FBB90D6768885118 /* Pods_ProductsApp_ProductsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CACC520FCE8521F0979F1A /* Pods_ProductsApp_ProductsAppUITests.framework */; };
+		9F88228729798591009B1417 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88228629798591009B1417 /* CacheManager.swift */; };
 		9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */; };
 		9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */; };
 		9FA6287E297922690018BAFE /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287D297922690018BAFE /* HomeContracts.swift */; };
@@ -65,6 +66,7 @@
 		36D133E78704C85A36D8566F /* Pods-ProductsApp-ProductsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ProductsApp-ProductsAppUITests/Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77814982B34DFA07F157FD1F /* Pods-ProductsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp.debug.xcconfig"; path = "Target Support Files/Pods-ProductsApp/Pods-ProductsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		96DD33B48E45849E3C3BA486 /* Pods_ProductsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F88228629798591009B1417 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		9FA6287D297922690018BAFE /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				9FF340C729784AEF00DEAB40 /* NetworkManager.swift */,
+				9F88228629798591009B1417 /* CacheManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				9FF340CC2978647C00DEAB40 /* LoginResponseModel.swift in Sources */,
 				9FF340C829784AEF00DEAB40 /* NetworkManager.swift in Sources */,
 				9FF340CA2978609E00DEAB40 /* ResultTypeEnum.swift in Sources */,
+				9F88228729798591009B1417 /* CacheManager.swift in Sources */,
 				9FF3409129781A1C00DEAB40 /* AppDelegate.swift in Sources */,
 				9FF340DD29788D0700DEAB40 /* LoginContracts.swift in Sources */,
 				9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */,
