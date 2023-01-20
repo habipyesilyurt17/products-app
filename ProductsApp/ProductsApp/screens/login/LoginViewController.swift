@@ -7,58 +7,42 @@
 
 import UIKit
 
+protocol LoginViewInterface: AnyObject {
+    var showPassword: Bool { get set }
+    
+    func prepareEyeIconForPasswordInput()
+    func prepareTextFieldDelegate()
+    func showHomePage()
+    func startIndicator()
+    func stopIndicator()
+    func showErrorAlertMessage(errorMessage: String)
+    func tapGestureRecognizer()
+    func viewEndEditing()
+}
+
 final class LoginViewController: BaseViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var showPassword = true
-    var viewModel: LoginViewModelProtocol = LoginViewModel()
+    private lazy var viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePasswordInput()
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
-//        usernameTextField.text = "mor_2314"
-//        passwordTextField.text = "83r5^_"
-        viewModel.delegate = self
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
-    
-    private func configurePasswordInput() {
-        let eyeIcon = UIImageView()
-        let contentView = UIView()
         
-        eyeIcon.image = UIImage(systemName: "eye.slash")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-        
-        contentView.addSubview(eyeIcon)
-        
-        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
-        eyeIcon.frame = CGRect(x: -10, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
-        passwordTextField.rightView = contentView
-        passwordTextField.rightViewMode = .always
-        
-        let topGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(eyeIconTapped(topGestureRecognizer:)))
-        eyeIcon.isUserInteractionEnabled = true
-        eyeIcon.addGestureRecognizer(topGestureRecognizer)
-    }
-    
     @objc func eyeIconTapped(topGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = topGestureRecognizer.view as! UIImageView
-        if showPassword {
-            showPassword = false
-            tappedImage.image = UIImage(systemName: "eye")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            showPassword = true
-            tappedImage.image = UIImage(systemName: "eye.slash")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-            passwordTextField.isSecureTextEntry = true
-        }
+        viewModel.eyeIconTapped(tappedImage: tappedImage, usernameTextField: usernameTextField, passwordTextField: passwordTextField)
     }
     
+    @objc private func dismissKeyboard() {
+        viewModel.dismissKeyboard()
+    }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
-        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
-        viewModel.login(username: username, password: password)
+        viewModel.loginButtonPressed(username: usernameTextField.text?.trimmingCharacters(in: .whitespaces), password: passwordTextField.text?.trimmingCharacters(in: .whitespaces))
     }
     
 }
@@ -70,18 +54,54 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
-extension LoginViewController: LoginViewModelDelegate {
-    func handleViewModelOutput(_ output: LoginViewModelOutput) {
-        switch output {
-        case .setLoading(let isLoading):
-            isLoading ? indicator.startAnimating() : indicator.stopAnimating()
-        case .showAlert(let errorMessage):
-            self.showErrorAlert(message: errorMessage)
-            self.indicator.stopAnimating()
-        case .showHomePage(_):
-            let tabBarViewController = TabBarViewController()
-            tabBarViewController.modalPresentationStyle = .overFullScreen
-            self.present(tabBarViewController, animated: true)
-        }
+extension LoginViewController: LoginViewInterface {
+    func prepareEyeIconForPasswordInput() {
+        let eyeIcon = UIImageView()
+        let contentView = UIView()
+        
+        eyeIcon.image = UIImage(systemName: "eye.slash")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
+        contentView.addSubview(eyeIcon)
+        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
+        eyeIcon.frame = CGRect(x: -10, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
+        passwordTextField.rightView = contentView
+        passwordTextField.rightViewMode = .always
+        
+        let topGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(eyeIconTapped(topGestureRecognizer:)))
+        eyeIcon.isUserInteractionEnabled = true
+        eyeIcon.addGestureRecognizer(topGestureRecognizer)
+    }
+
+    func prepareTextFieldDelegate() {
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        usernameTextField.text = "mor_2314"
+        passwordTextField.text = "83r5^_"
+    }
+    
+    func showHomePage() {
+        let tabBarViewController = TabBarViewController()
+        tabBarViewController.modalPresentationStyle = .overFullScreen
+        self.present(tabBarViewController, animated: true)
+    }
+    
+    func startIndicator() {
+        indicator.startAnimating()
+    }
+    
+    func stopIndicator() {
+        indicator.stopAnimating()
+    }
+    
+    func showErrorAlertMessage(errorMessage: String) {
+        showErrorAlert(message: errorMessage)
+    }
+    
+    func tapGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func viewEndEditing() {
+        view.endEditing(true)
     }
 }

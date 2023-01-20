@@ -30,7 +30,6 @@
 		9FF340D72978691700DEAB40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D62978691700DEAB40 /* Constants.swift */; };
 		9FF340DA2978781F00DEAB40 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340D82978781F00DEAB40 /* LoginViewController.swift */; };
 		9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF340D92978781F00DEAB40 /* LoginViewController.xib */; };
-		9FF340DD29788D0700DEAB40 /* LoginContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340DC29788D0700DEAB40 /* LoginContracts.swift */; };
 		9FF340DF29788D4100DEAB40 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340DE29788D4100DEAB40 /* LoginViewModel.swift */; };
 		9FF340E229788EB500DEAB40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340E129788EB500DEAB40 /* BaseViewController.swift */; };
 		9FFB9ABC2978A35A005B6F09 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */; };
@@ -91,7 +90,6 @@
 		9FF340D62978691700DEAB40 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9FF340D82978781F00DEAB40 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9FF340D92978781F00DEAB40 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		9FF340DC29788D0700DEAB40 /* LoginContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContracts.swift; sourceTree = "<group>"; };
 		9FF340DE29788D4100DEAB40 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9FF340E129788EB500DEAB40 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 			children = (
 				9FF340D82978781F00DEAB40 /* LoginViewController.swift */,
 				9FF340D92978781F00DEAB40 /* LoginViewController.xib */,
-				9FF340DC29788D0700DEAB40 /* LoginContracts.swift */,
 				9FF340DE29788D4100DEAB40 /* LoginViewModel.swift */,
 			);
 			path = login;
@@ -558,7 +555,6 @@
 				9FF340CA2978609E00DEAB40 /* ResultTypeEnum.swift in Sources */,
 				9F88228729798591009B1417 /* CacheManager.swift in Sources */,
 				9FF3409129781A1C00DEAB40 /* AppDelegate.swift in Sources */,
-				9FF340DD29788D0700DEAB40 /* LoginContracts.swift in Sources */,
 				9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */,
 				9FC23113297B3DA900B760DC /* UIColor+Ext.swift in Sources */,
 				9FF340D4297868AC00DEAB40 /* ProductResponseModel.swift in Sources */,
