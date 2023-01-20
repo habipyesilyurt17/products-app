@@ -5,40 +5,93 @@
 //  Created by Habip Yeşilyurt on 19.01.2023.
 //
 
-import Foundation
-final class HomeViewModel: ProductViewModelProtocol {
-    var delegate: ProductViewModelDelegate?
-    private var products: Product = []
-    private var filteredProducts: Product = []
+import UIKit
+
+protocol HomeViewModelInterface {
+    var view: HomeViewInterface? { get set }
+    var products: Product { get set }
+    var filteredProducts: Product { get set }
     
-    func load(isRefresh: Bool) {
+    func viewDidLoad()
+    func viewWillAppear()
+    func pulledDownRefreshControl()
+    func dismissKeyboard()
+    func textDidChange(searchText: String)
+    func numberOfItemsInSection() -> Int
+    func getProduct(at indexPath: IndexPath) -> ProductResponseModel?
+    func cellForItemAt(at indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell
+}
+
+final class HomeViewModel {
+    weak var view: HomeViewInterface?
+    internal var products: Product = []
+    internal var filteredProducts: Product = []
+    
+    private func fetchProducts(isRefresh: Bool) {
         if !isRefresh {
-            notify(.setLoading(true))
+            view?.startIndicator()
         }
         NetworkManager.shared.fetchProducts { [weak self] result in
-            guard let self = self else { return }
-            self.notify(.setLoading(false))
+            self?.view?.stopIndicator()
             switch result {
             case .success(let response):
-                self.products = response
-                self.notify(.showProductList(self.products))
+                self?.products = response
+                self?.view?.products = self?.products ?? []
+                self?.view?.endRefreshing()
+                self?.view?.reloadData()
             case .failure(let errorMessage):
-                self.notify(.showAlert(errorMessage.rawValue))
+                self?.view?.showErrorAlertMessage(errorMessage: errorMessage.rawValue)
             }
         }
     }
     
-    func search(searchText: String) {
+    private func searchedData(products: Product) {
+        view?.products = products
+        view?.reloadData()
+    }
+}
+
+extension HomeViewModel: HomeViewModelInterface {
+    func viewDidLoad() {
+        view?.prepareSearchBar()
+        view?.prepareCollectionView()
+        view?.addTopGestureRecognizer()
+        fetchProducts(isRefresh: false)
+    }
+    
+    func viewWillAppear() {
+        view?.prepareRefreshControl(tintColor: REFRESH_CONTROL_TINT_COLOR)
+    }
+    
+    func pulledDownRefreshControl() {
+        fetchProducts(isRefresh: true)
+    }
+    
+    func dismissKeyboard() {
+        view?.viewEndEditing()
+    }
+    
+    func textDidChange(searchText: String) {
         if searchText == "" {
             filteredProducts = products
         } else {
             filteredProducts = products.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
-        notify(.showProductList(filteredProducts))
+        searchedData(products: filteredProducts)
     }
     
-    private func notify(_ output: ProductViewModelOutput) {
-        delegate?.handleViewModelOutput(output)
+    func numberOfItemsInSection() -> Int {
+        view?.products.count ?? 0
     }
     
+    func getProduct(at indexPath: IndexPath) -> ProductResponseModel? {
+        view?.products[indexPath.item]
+    }
+    
+    func cellForItemAt(at indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCollectionViewCell,   let product = getProduct(at: indexPath) else { return UICollectionViewCell() }
+        cell.configure(product: product)
+        return cell
+    }
 }
+

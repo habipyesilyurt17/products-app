@@ -8,7 +8,8 @@
 import UIKit
 
 final class TabBarViewController: UITabBarController {
-    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
         let homeController     = HomeViewController()
         let savedController    = SavedViewController()
         let cartController     = CartViewController()

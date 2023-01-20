@@ -7,84 +7,116 @@
 
 import UIKit
 
+protocol HomeViewInterface: AnyObject {
+    var products: Product { get set }
+    
+    func prepareSearchBar()
+    func prepareCollectionView()
+    func prepareRefreshControl(tintColor: String)
+    func addTopGestureRecognizer()
+    func beginRefreshing()
+    func endRefreshing()
+    func reloadData()
+    func showErrorAlertMessage(errorMessage: String)
+    func startIndicator()
+    func stopIndicator()
+    func viewEndEditing()
+}
+
 final class HomeViewController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    private var products: Product = []
-    private lazy var refreshControl = UIRefreshControl()
-    
-    var viewModel: ProductViewModelProtocol = HomeViewModel()
+    private lazy var viewModel = HomeViewModel()
+    internal var products: Product = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearchBar()
-        configureCollectionView()
-        configureRefreshControl()
-        viewModel.delegate = self
-        viewModel.load(isRefresh: false)
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
     
-    private func configureSearchBar() {
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.viewWillAppear()
+    }
+    
+    @objc private func pulledDownRefreshControl() {
+        viewModel.pulledDownRefreshControl()
+    }
+    
+    @objc private func dismissKeyboard() {
+        viewModel.dismissKeyboard()
+    }
+}
+
+extension HomeViewController: HomeViewInterface {
+    func prepareSearchBar() {
         searchBar.delegate = self
         searchBar.barTintColor = .white
         searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
     }
     
-    private func configureCollectionView() {
+    func prepareCollectionView() {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCell")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.size.width/3, height: 270)
         collectionView.collectionViewLayout = layout
-        collectionView.refreshControl = refreshControl
-        collectionView.addSubview(refreshControl)
+        collectionView.reloadData()
     }
     
-    private func configureRefreshControl() {
-        refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Product Data ...")
-        refreshControl.addTarget(self, action: #selector(refreshProductData(_:)), for: .valueChanged)
+    func prepareRefreshControl(tintColor: String) {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .init(hexString: tintColor)
+        refreshControl.addTarget(self, action: #selector(pulledDownRefreshControl), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
-
-    @objc private func refreshProductData(_ sender: AnyObject) {
-        viewModel.load(isRefresh: true)
+    
+    func addTopGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func beginRefreshing() {
+        collectionView.refreshControl?.beginRefreshing()
+    }
+    
+    func endRefreshing() {
+        collectionView.refreshControl?.endRefreshing()
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
+    func showErrorAlertMessage(errorMessage: String) {
+        showErrorAlert(message: errorMessage)
+    }
+    
+    func startIndicator() {
+        indicator.startAnimating()
+    }
+    
+    func stopIndicator() {
+        indicator.stopAnimating()
+    }
+    
+    func viewEndEditing() {
+        view.endEditing(true)
     }
 }
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(searchText: searchText)
+        viewModel.textDidChange(searchText: searchText)
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        products.count
+        viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(product: products[indexPath.row])
-        return cell
-    }
-}
-
-extension HomeViewController: ProductViewModelDelegate {
-    func handleViewModelOutput(_ output: ProductViewModelOutput) {
-        switch output {
-        case .setLoading(let isLoading):
-            isLoading ? indicator.startAnimating() : indicator.stopAnimating()
-        case .showAlert(let errorMessage):
-            showErrorAlert(message: errorMessage) { [weak self] in
-                guard let self = self else { return }
-                self.refreshControl.endRefreshing()
-            }
-        case .showProductList(let products):
-            self.products = products
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
-        }
+        viewModel.cellForItemAt(at: indexPath, collectionView: collectionView)
     }
 }

@@ -18,8 +18,8 @@ final class LoginViewController: BaseViewController {
         configurePasswordInput()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
-        //        usernameTextField.text = "mor_2314"
-        //        passwordTextField.text = "83r5^_"
+//        usernameTextField.text = "mor_2314"
+//        passwordTextField.text = "83r5^_"
         viewModel.delegate = self
     }
     
@@ -76,10 +76,8 @@ extension LoginViewController: LoginViewModelDelegate {
         case .setLoading(let isLoading):
             isLoading ? indicator.startAnimating() : indicator.stopAnimating()
         case .showAlert(let errorMessage):
-            self.showErrorAlert(message: errorMessage) { [weak self] in
-                guard let self = self else { return }
-                self.indicator.stopAnimating()
-            }
+            self.showErrorAlert(message: errorMessage)
+            self.indicator.stopAnimating()
         case .showHomePage(_):
             let tabBarViewController = TabBarViewController()
             tabBarViewController.modalPresentationStyle = .overFullScreen
