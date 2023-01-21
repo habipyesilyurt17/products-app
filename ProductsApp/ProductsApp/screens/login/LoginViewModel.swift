@@ -14,6 +14,8 @@ protocol LoginViewModelInterface {
     func eyeIconTapped(tappedImage: UIImageView, usernameTextField: UITextField, passwordTextField: UITextField)
     func loginButtonPressed(username: String?, password: String?)
     func dismissKeyboard()
+    func keyboardWillShow(notification: NSNotification, scrollView: UIScrollView, viewFrameWidth: CGFloat)
+    func keyboardWillHide(notification: NSNotification, scrollView: UIScrollView, viewFrameWidth: CGFloat)
 }
 
 final class LoginViewModel {
@@ -39,6 +41,8 @@ extension LoginViewModel: LoginViewModelInterface {
         view?.prepareEyeIconForPasswordInput()
         view?.prepareTextFieldDelegate()
         view?.tapGestureRecognizer()
+        view?.keyboardShow()
+        view?.keyboardHide()
     }
     
     func eyeIconTapped(tappedImage: UIImageView, usernameTextField: UITextField, passwordTextField: UITextField) {
@@ -52,7 +56,6 @@ extension LoginViewModel: LoginViewModelInterface {
             tappedImage.image = UIImage(systemName: "eye.slash")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
             passwordTextField.isSecureTextEntry = true
         }
-
     }
     
     func loginButtonPressed(username: String?, password: String?) {
@@ -63,5 +66,25 @@ extension LoginViewModel: LoginViewModelInterface {
     
     func dismissKeyboard() {
         view?.viewEndEditing()
+    }
+    
+    func keyboardWillShow(notification: NSNotification, scrollView: UIScrollView, viewFrameWidth: CGFloat) {
+        if !view!.isExpand {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardHeight = keyboardFrame.cgRectValue.height
+                scrollView.contentSize = CGSize(width: viewFrameWidth, height: scrollView.frame.height + keyboardHeight)
+            }
+            view?.isExpand = true
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification, scrollView: UIScrollView, viewFrameWidth: CGFloat) {
+        if view!.isExpand {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardHeight = keyboardFrame.cgRectValue.height
+                scrollView.contentSize = CGSize(width: viewFrameWidth, height: scrollView.frame.height - keyboardHeight)
+            }
+            view?.isExpand = false
+        }
     }
 }

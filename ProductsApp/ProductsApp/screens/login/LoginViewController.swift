@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginViewInterface: AnyObject {
     var showPassword: Bool { get set }
+    var isExpand: Bool { get set }
     
     func prepareEyeIconForPasswordInput()
     func prepareTextFieldDelegate()
@@ -18,12 +19,17 @@ protocol LoginViewInterface: AnyObject {
     func showErrorAlertMessage(errorMessage: String)
     func tapGestureRecognizer()
     func viewEndEditing()
+    func keyboardShow()
+    func keyboardHide()
 }
 
 final class LoginViewController: BaseViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var showPassword = true
+    var isExpand = false
+    var activeTextField : UITextField? = nil
     private lazy var viewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -31,7 +37,15 @@ final class LoginViewController: BaseViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
-        
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        viewModel.keyboardWillShow(notification: notification, scrollView: scrollView, viewFrameWidth: self.view.frame.width)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        viewModel.keyboardWillHide(notification: notification, scrollView: scrollView, viewFrameWidth: self.view.frame.width)
+    }
+    
     @objc func eyeIconTapped(topGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = topGestureRecognizer.view as! UIImageView
         viewModel.eyeIconTapped(tappedImage: tappedImage, usernameTextField: usernameTextField, passwordTextField: passwordTextField)
@@ -44,13 +58,25 @@ final class LoginViewController: BaseViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         viewModel.loginButtonPressed(username: usernameTextField.text?.trimmingCharacters(in: .whitespaces), password: passwordTextField.text?.trimmingCharacters(in: .whitespaces))
     }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTextField = textField
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        self.activeTextField = nil
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
     }
 }
 
@@ -70,7 +96,7 @@ extension LoginViewController: LoginViewInterface {
         eyeIcon.isUserInteractionEnabled = true
         eyeIcon.addGestureRecognizer(topGestureRecognizer)
     }
-
+    
     func prepareTextFieldDelegate() {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -103,5 +129,13 @@ extension LoginViewController: LoginViewInterface {
     
     func viewEndEditing() {
         view.endEditing(true)
+    }
+    
+    func keyboardShow() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    func keyboardHide() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
