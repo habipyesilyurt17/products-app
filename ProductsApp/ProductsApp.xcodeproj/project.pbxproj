@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		005270A458610718201559CA /* Pods_ProductsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C738D1297A666A863669EA /* Pods_ProductsAppTests.framework */; };
 		9C10B297FBB90D6768885118 /* Pods_ProductsApp_ProductsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CACC520FCE8521F0979F1A /* Pods_ProductsApp_ProductsAppUITests.framework */; };
+		9F79D0D1297BD85700175A2D /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F79D0D0297BD85700175A2D /* TabBarViewModel.swift */; };
 		9F88228729798591009B1417 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88228629798591009B1417 /* CacheManager.swift */; };
 		9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */; };
 		9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */; };
@@ -65,6 +66,7 @@
 		36D133E78704C85A36D8566F /* Pods-ProductsApp-ProductsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ProductsApp-ProductsAppUITests/Pods-ProductsApp-ProductsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77814982B34DFA07F157FD1F /* Pods-ProductsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsApp.debug.xcconfig"; path = "Target Support Files/Pods-ProductsApp/Pods-ProductsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		96DD33B48E45849E3C3BA486 /* Pods_ProductsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F79D0D0297BD85700175A2D /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		9F88228629798591009B1417 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		9FA6287A29791CFD0018BAFE /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -146,6 +148,33 @@
 				A9F31B28A3CBC8BD4C6182FA /* Pods-ProductsAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9F79D0D2297BDF1400175A2D /* saved */ = {
+			isa = PBXGroup;
+			children = (
+				9FFB9AC62978A3D7005B6F09 /* SavedViewController.swift */,
+				9FFB9AC72978A3D7005B6F09 /* SavedViewController.xib */,
+			);
+			path = saved;
+			sourceTree = "<group>";
+		};
+		9F79D0D3297BDF3400175A2D /* cart */ = {
+			isa = PBXGroup;
+			children = (
+				9FFB9ABE2978A372005B6F09 /* CartViewController.swift */,
+				9FFB9ABF2978A372005B6F09 /* CartViewController.xib */,
+			);
+			path = cart;
+			sourceTree = "<group>";
+		};
+		9F79D0D4297BDF4700175A2D /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				9FFB9AC22978A388005B6F09 /* SettingsViewController.swift */,
+				9FFB9AC32978A388005B6F09 /* SettingsViewController.xib */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 		9FF3408429781A1C00DEAB40 = {
@@ -256,12 +285,10 @@
 			isa = PBXGroup;
 			children = (
 				9FD3BAF82978A1F3003B991A /* TabBarViewController.swift */,
-				9FFB9AC62978A3D7005B6F09 /* SavedViewController.swift */,
-				9FFB9AC72978A3D7005B6F09 /* SavedViewController.xib */,
-				9FFB9ABE2978A372005B6F09 /* CartViewController.swift */,
-				9FFB9ABF2978A372005B6F09 /* CartViewController.xib */,
-				9FFB9AC22978A388005B6F09 /* SettingsViewController.swift */,
-				9FFB9AC32978A388005B6F09 /* SettingsViewController.xib */,
+				9F79D0D0297BD85700175A2D /* TabBarViewModel.swift */,
+				9F79D0D2297BDF1400175A2D /* saved */,
+				9F79D0D3297BDF3400175A2D /* cart */,
+				9F79D0D4297BDF4700175A2D /* settings */,
 			);
 			path = tabbar;
 			sourceTree = "<group>";
@@ -568,6 +595,7 @@
 				9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */,
 				9FF340D72978691700DEAB40 /* Constants.swift in Sources */,
 				9FFB9AC42978A388005B6F09 /* SettingsViewController.swift in Sources */,
+				9F79D0D1297BD85700175A2D /* TabBarViewModel.swift in Sources */,
 				9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,3 +12,4 @@ let LOGIN_URL   = "/auth/login"
 let PRODUCT_URL = "/products"
 
 let REFRESH_CONTROL_TINT_COLOR = "68BD49"
+let TABBAR_TINT_COLOR = "68BD49"

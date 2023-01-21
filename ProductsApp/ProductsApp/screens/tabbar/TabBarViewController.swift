@@ -7,9 +7,23 @@
 
 import UIKit
 
+protocol TabBarViewInterface: AnyObject {
+    func prepareTabBarItemsController()
+    func prepareTabBar()
+}
+
 final class TabBarViewController: UITabBarController {
+    private lazy var viewModel = TabBarViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.view = self
+        viewModel.viewWillAppear()
+        viewModel.setTabBarItemsImage(items: self.tabBar.items)
+    }
+}
+
+extension TabBarViewController: TabBarViewInterface {
+    func prepareTabBarItemsController() {
         let homeController     = HomeViewController()
         let savedController    = SavedViewController()
         let cartController     = CartViewController()
@@ -21,16 +35,11 @@ final class TabBarViewController: UITabBarController {
         settingsController.title = "Settings"
         
         self.setViewControllers([homeController, savedController, cartController, settingsController], animated: true)
-        
-        guard let items = self.tabBar.items else { return }
-        let itemImages = ["house", "heart", "cart", "gearshape"]
-        
-        for i in 0...itemImages.count - 1 {
-            items[i].image = UIImage(systemName: itemImages[i])
-        }
-        
+    }
+    
+    func prepareTabBar() {
         self.tabBar.layer.borderWidth = 0.2
         self.tabBar.backgroundColor = .white
-        self.tabBar.tintColor = UIColor(red: CGFloat(104/255.0), green: CGFloat(189/255.0), blue: CGFloat(73/255.0), alpha: CGFloat(1.0))
+        self.tabBar.tintColor = .init(hexString: TABBAR_TINT_COLOR)
     }
 }
