@@ -17,3 +17,5 @@
 "Check internet" = "İnterneti kontrol et";
 "Username or password cant be empty" = "Kullanıcı adı veya şifre boş olamaz";
 "comingSoon" = "Pek yakında...";
+"homeLabel" = "Anasayfa";
+"searchBarPlaceholder" = "Herhangi bir şey ara";

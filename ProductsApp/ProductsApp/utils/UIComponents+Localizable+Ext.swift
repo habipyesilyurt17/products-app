@@ -28,3 +28,15 @@ extension UIButton: XIBLocalizableInterface {
         }
    }
 }
+
+extension UISearchBar {
+    @IBInspectable
+    var keyPlaceholder: String {
+        set{
+            self.placeholder = newValue.localized()
+        }
+        get{
+            return placeholder ?? ""
+        }
+    }
+}
