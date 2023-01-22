@@ -14,6 +14,9 @@
 		9F7208C9297D2BCA006C93BA /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7208C8297D2BCA006C93BA /* MockHomeViewController.swift */; };
 		9F7208CC297D5D98006C93BA /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7208CB297D5D98006C93BA /* LoginViewModelTests.swift */; };
 		9F7208CE297D60A3006C93BA /* MockLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7208CD297D60A3006C93BA /* MockLoginViewController.swift */; };
+		9F72092F297DE27B006C93BA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F720931297DE27B006C93BA /* Localizable.strings */; };
+		9F720934297DE3B0006C93BA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F720933297DE3B0006C93BA /* String+Ext.swift */; };
+		9F720936297DE48A006C93BA /* UIComponents+Localizable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F720935297DE48A006C93BA /* UIComponents+Localizable+Ext.swift */; };
 		9F79D0D1297BD85700175A2D /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F79D0D0297BD85700175A2D /* TabBarViewModel.swift */; };
 		9F88228729798591009B1417 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88228629798591009B1417 /* CacheManager.swift */; };
 		9FA6287B29791CFD0018BAFE /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */; };
@@ -76,6 +79,10 @@
 		9F7208C8297D2BCA006C93BA /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
 		9F7208CB297D5D98006C93BA /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		9F7208CD297D60A3006C93BA /* MockLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginViewController.swift; sourceTree = "<group>"; };
+		9F720930297DE27B006C93BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9F720932297DE282006C93BA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9F720933297DE3B0006C93BA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		9F720935297DE48A006C93BA /* UIComponents+Localizable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIComponents+Localizable+Ext.swift"; sourceTree = "<group>"; };
 		9F79D0D0297BD85700175A2D /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		9F88228629798591009B1417 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FA6287929791CFD0018BAFE /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +261,7 @@
 				9FF340C22978232900DEAB40 /* screens */,
 				9FF340D5297868E300DEAB40 /* utils */,
 				9FF3409E29781A1D00DEAB40 /* Info.plist */,
+				9F720931297DE27B006C93BA /* Localizable.strings */,
 			);
 			path = ProductsApp;
 			sourceTree = "<group>";
@@ -357,6 +365,8 @@
 			children = (
 				9FF340D62978691700DEAB40 /* Constants.swift */,
 				9FC23112297B3DA900B760DC /* UIColor+Ext.swift */,
+				9F720933297DE3B0006C93BA /* String+Ext.swift */,
+				9F720935297DE48A006C93BA /* UIComponents+Localizable+Ext.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -470,6 +480,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 9FF3408429781A1C00DEAB40;
 			productRefGroup = 9FF3408E29781A1C00DEAB40 /* Products */;
@@ -493,6 +504,7 @@
 				9FF3409A29781A1D00DEAB40 /* Assets.xcassets in Resources */,
 				9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */,
 				9FFB9AC12978A372005B6F09 /* CartViewController.xib in Resources */,
+				9F72092F297DE27B006C93BA /* Localizable.strings in Resources */,
 				9FFB9AC52978A388005B6F09 /* SettingsViewController.xib in Resources */,
 				9FFB9AC92978A3D7005B6F09 /* SavedViewController.xib in Resources */,
 			);
@@ -629,6 +641,7 @@
 				9FF340CA2978609E00DEAB40 /* ResultTypeEnum.swift in Sources */,
 				9F88228729798591009B1417 /* CacheManager.swift in Sources */,
 				9FF3409129781A1C00DEAB40 /* AppDelegate.swift in Sources */,
+				9F720934297DE3B0006C93BA /* String+Ext.swift in Sources */,
 				9FF3409329781A1C00DEAB40 /* SceneDelegate.swift in Sources */,
 				9FC23113297B3DA900B760DC /* UIColor+Ext.swift in Sources */,
 				9FF340D4297868AC00DEAB40 /* ProductResponseModel.swift in Sources */,
@@ -639,6 +652,7 @@
 				9FFB9AC02978A372005B6F09 /* CartViewController.swift in Sources */,
 				9FF340DA2978781F00DEAB40 /* LoginViewController.swift in Sources */,
 				9FA628802979243C0018BAFE /* HomeViewModel.swift in Sources */,
+				9F720936297DE48A006C93BA /* UIComponents+Localizable+Ext.swift in Sources */,
 				9FD3BAFA2978A1F3003B991A /* TabBarViewController.swift in Sources */,
 				9FF340D72978691700DEAB40 /* Constants.swift in Sources */,
 				9FFB9AC42978A388005B6F09 /* SettingsViewController.swift in Sources */,
@@ -683,6 +697,18 @@
 			targetProxy = 9FF340AE29781A1D00DEAB40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9F720931297DE27B006C93BA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F720930297DE27B006C93BA /* en */,
+				9F720932297DE282006C93BA /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9FF340B529781A1D00DEAB40 /* Debug */ = {

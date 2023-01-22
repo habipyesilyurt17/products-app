@@ -29,10 +29,10 @@ extension TabBarViewController: TabBarViewInterface {
         let cartController     = CartViewController()
         let settingsController = SettingsViewController()
         
-        homeController.title = "Home"
-        savedController.title = "Saved"
-        cartController.title = "Cart"
-        settingsController.title = "Settings"
+        homeController.title = "Home".localized()
+        savedController.title = "Saved".localized()
+        cartController.title = "Cart".localized()
+        settingsController.title = "Settings".localized()
         
         self.setViewControllers([homeController, savedController, cartController, settingsController], animated: true)
     }

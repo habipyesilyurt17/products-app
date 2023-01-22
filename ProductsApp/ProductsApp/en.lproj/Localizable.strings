@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  ProductsApp
+
+  Created by Habip Yeşilyurt on 23.01.2023.
+  
+*/
+
+"Home" = "Home";
+"Saved" = "Saved";
+"Cart" = "Cart";
+"Settings" = "Settings";
+"Error" = "Error";
+"Ok" = "Ok";
+"Username or password is incorrect" = "Username or password is incorrect";
+"Data couldn't be fetched" = "Data couldn't be fetched";
+"Check internet" = "Check internet";
+"Username or password cant be empty" = "Username or password cant be empty";

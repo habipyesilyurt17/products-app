@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  ProductsApp
+
+  Created by Habip Yeşilyurt on 23.01.2023.
+  
+*/
+
+"Home" = "Anasayfa";
+"Saved" = "Kaydedildi";
+"Cart" = "Sepetim";
+"Settings" = "Ayarlar";
+"Error" = "Hata";
+"Ok" = "Tamam";
+"Username or password is incorrect" = "Kullanıcı adı veya şifre yanlış";
+"Data couldn't be fetched" = "Veriler getirilemedi";
+"Check internet" = "İnterneti kontrol et";
+"Username or password cant be empty" = "Kullanıcı adı veya şifre boş olamaz";

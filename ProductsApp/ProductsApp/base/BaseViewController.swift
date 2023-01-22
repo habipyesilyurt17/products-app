@@ -29,6 +29,6 @@ class BaseViewController: UIViewController {
     }
 
     func showErrorAlert(message: String) {
-        SwiftAlertView.show(title: "Error", message: message, buttonTitles: ["Ok"])
+        SwiftAlertView.show(title: "Error".localized(), message: message.localized(), buttonTitles: ["Ok".localized()])
     }
 }
