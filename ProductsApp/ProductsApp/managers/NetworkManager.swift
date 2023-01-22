@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Network
 
-protocol NetworkManagerProtocol {
+protocol NetworkManagerInterface {
     func login(username: String, password: String, completion: @escaping (ResultTypeEnum<LoginResponseModel>) -> Void)
     func fetchProducts(completion: @escaping (ResultTypeEnum<Product>) -> Void)
 }
@@ -18,7 +18,7 @@ protocol InternetProtocol {
     func checkInternet(completion: @escaping (Bool) -> ())
 }
 
-struct NetworkManager: NetworkManagerProtocol {
+struct NetworkManager: NetworkManagerInterface {
     static let shared = NetworkManager()
     
     func login(username: String, password: String, completion: @escaping (ResultTypeEnum<LoginResponseModel>) -> Void) {

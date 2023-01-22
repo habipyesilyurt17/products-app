@@ -8,7 +8,6 @@
 import UIKit
 
 protocol HomeViewModelInterface {
-    var view: HomeViewInterface? { get set }
     var products: Product { get set }
     var filteredProducts: Product { get set }
     
@@ -23,15 +22,21 @@ protocol HomeViewModelInterface {
 }
 
 final class HomeViewModel {
-    weak var view: HomeViewInterface?
+    private weak var view: HomeViewInterface?
     internal var products: Product = []
     internal var filteredProducts: Product = []
+    private let networkManager: NetworkManagerInterface
+    
+    init(view: HomeViewInterface, networkManager: NetworkManagerInterface = NetworkManager.shared) {
+        self.view = view
+        self.networkManager = networkManager
+    }
     
     private func fetchProducts(isRefresh: Bool) {
         if !isRefresh {
             view?.startIndicator()
         }
-        NetworkManager.shared.fetchProducts { [weak self] result in
+        networkManager.fetchProducts { [weak self] result in
             self?.view?.stopIndicator()
             switch result {
             case .success(let response):

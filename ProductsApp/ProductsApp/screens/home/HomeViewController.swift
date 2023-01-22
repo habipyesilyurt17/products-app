@@ -26,12 +26,11 @@ protocol HomeViewInterface: AnyObject {
 final class HomeViewController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    private lazy var viewModel = HomeViewModel()
+    private lazy var viewModel = HomeViewModel(view: self)
     internal var products: Product = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.view = self
         viewModel.viewDidLoad()
     }
     
