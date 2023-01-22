@@ -26,17 +26,27 @@ extension UIButton: XIBLocalizableInterface {
         set(key) {
             setTitle(key?.localized(), for: .normal)
         }
-   }
+    }
 }
 
-extension UISearchBar {
-    @IBInspectable
-    var keyPlaceholder: String {
-        set{
-            self.placeholder = newValue.localized()
+protocol XIBLocalizableForPlaceholderInterface {
+    var keyPlaceholder: String? { get set }
+}
+
+extension UISearchBar: XIBLocalizableForPlaceholderInterface {
+    @IBInspectable var keyPlaceholder: String? {
+        get { return nil }
+        set(key) {
+            placeholder = key?.localized()
         }
-        get{
-            return placeholder ?? ""
+    }
+}
+
+extension UITextField: XIBLocalizableForPlaceholderInterface {
+    @IBInspectable var keyPlaceholder: String? {
+        get { return nil }
+        set(key) {
+            placeholder = key?.localized()
         }
     }
 }

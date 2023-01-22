@@ -19,3 +19,8 @@
 "comingSoon" = "Coming soon...";
 "homeLabel" = "Home";
 "searchBarPlaceholder" = "Search anything";
+"username" = "Username";
+"password" = "Password";
+"loginBtn" = "Login";
+"usernamePlaceholder" = "Enter your username";
+"passwordPlaceholder" = "Enter your password";

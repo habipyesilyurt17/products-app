@@ -52,6 +52,9 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="username"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7F-2A-QxW">
                                     <rect key="frame" x="16" y="302.33333333333331" width="361" height="53"/>
@@ -60,12 +63,18 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="keyPlaceholder" value="usernamePlaceholder"/>
+                                    </userDefinedRuntimeAttributes>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scx-77-sCA">
                                     <rect key="frame" x="16" y="371.33333333333331" width="86" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="password"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HjU-ST-Jaz">
                                     <rect key="frame" x="16" y="410.33333333333331" width="361" height="53"/>
@@ -74,6 +83,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="keyPlaceholder" value="passwordPlaceholder"/>
+                                    </userDefinedRuntimeAttributes>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyZ-38-pxo">
                                     <rect key="frame" x="136" y="523.33333333333337" width="121" height="47"/>
@@ -95,6 +107,7 @@
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="10"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="loginBtn"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="9l7-AS-ua8"/>

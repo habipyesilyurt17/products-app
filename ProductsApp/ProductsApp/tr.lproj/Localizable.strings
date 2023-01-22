@@ -19,3 +19,8 @@
 "comingSoon" = "Pek yakında...";
 "homeLabel" = "Anasayfa";
 "searchBarPlaceholder" = "Herhangi bir şey ara";
+"username" = "Kullanıcı adı";
+"password" = "Şifre";
+"loginBtn" = "Giriş";
+"usernamePlaceholder" = "Kullanıcı adınızı giriniz";
+"passwordPlaceholder" = "Şifrenizi giriniz";
