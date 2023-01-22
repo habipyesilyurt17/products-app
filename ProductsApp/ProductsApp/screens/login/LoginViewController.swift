@@ -30,11 +30,10 @@ final class LoginViewController: BaseViewController {
     var showPassword = true
     var isExpand = false
     var activeTextField : UITextField? = nil
-    private lazy var viewModel = LoginViewModel()
+    private lazy var viewModel = LoginViewModel(view: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.view = self
         viewModel.viewDidLoad()
     }
     

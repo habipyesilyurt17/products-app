@@ -23,6 +23,9 @@ final class HomeViewModelTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        view = nil
+        networkManager = nil
+        viewModel = nil
     }
     
     func test_viewDidLoad_InvokesRequiredMethods() {

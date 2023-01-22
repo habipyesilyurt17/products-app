@@ -8,8 +8,6 @@
 import UIKit
 
 protocol LoginViewModelInterface {
-    var view: LoginViewInterface? { get set }
-    
     func viewDidLoad()
     func eyeIconTapped(tappedImage: UIImageView, usernameTextField: UITextField, passwordTextField: UITextField)
     func loginButtonPressed(username: String?, password: String?)
@@ -19,11 +17,17 @@ protocol LoginViewModelInterface {
 }
 
 final class LoginViewModel {
-    weak var view: LoginViewInterface?
+    private weak var view: LoginViewInterface?
+    private let networkManager: NetworkManagerInterface
+
+    init(view: LoginViewInterface, networkManager: NetworkManagerInterface = NetworkManager.shared) {
+        self.view = view
+        self.networkManager = networkManager
+    }
     
     private func login(username: String, password: String) {
         view?.startIndicator()
-        NetworkManager.shared.login(username: username, password: password) { [weak self] result in
+        networkManager.login(username: username, password: password) { [weak self] result in
             guard let self = self else { return }
             self.view?.stopIndicator()
             switch result {
