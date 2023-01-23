@@ -41,6 +41,7 @@
 		9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF340D92978781F00DEAB40 /* LoginViewController.xib */; };
 		9FF340DF29788D4100DEAB40 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340DE29788D4100DEAB40 /* LoginViewModel.swift */; };
 		9FF340E229788EB500DEAB40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF340E129788EB500DEAB40 /* BaseViewController.swift */; };
+		9FF5A370297E85240084825B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FF5A36F297E85240084825B /* GoogleService-Info.plist */; };
 		9FFB9ABC2978A35A005B6F09 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */; };
 		9FFB9ABD2978A35A005B6F09 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FFB9ABB2978A35A005B6F09 /* HomeViewController.xib */; };
 		9FFB9AC02978A372005B6F09 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB9ABE2978A372005B6F09 /* CartViewController.swift */; };
@@ -111,6 +112,7 @@
 		9FF340D92978781F00DEAB40 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		9FF340DE29788D4100DEAB40 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9FF340E129788EB500DEAB40 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9FF5A36F297E85240084825B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FFB9ABA2978A35A005B6F09 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9FFB9ABB2978A35A005B6F09 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		9FFB9ABE2978A372005B6F09 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				9FF340C22978232900DEAB40 /* screens */,
 				9FF340D5297868E300DEAB40 /* utils */,
 				9FF3409E29781A1D00DEAB40 /* Info.plist */,
+				9FF5A36F297E85240084825B /* GoogleService-Info.plist */,
 				9F720931297DE27B006C93BA /* Localizable.strings */,
 			);
 			path = ProductsApp;
@@ -401,6 +404,7 @@
 				9FF3408A29781A1C00DEAB40 /* Frameworks */,
 				9FF3408B29781A1C00DEAB40 /* Resources */,
 				9BE7048D319FD30CD6D0C3E3 /* [CP] Embed Pods Frameworks */,
+				9FF5A371297E85ED0084825B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -501,6 +505,7 @@
 			files = (
 				9FF340DB2978781F00DEAB40 /* LoginViewController.xib in Resources */,
 				9FFB9ABD2978A35A005B6F09 /* HomeViewController.xib in Resources */,
+				9FF5A370297E85240084825B /* GoogleService-Info.plist in Resources */,
 				9FF3409A29781A1D00DEAB40 /* Assets.xcassets in Resources */,
 				9FA6287C29791CFD0018BAFE /* ProductCollectionViewCell.xib in Resources */,
 				9FFB9AC12978A372005B6F09 /* CartViewController.xib in Resources */,
@@ -582,6 +587,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProductsApp-ProductsAppUITests/Pods-ProductsApp-ProductsAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9FF5A371297E85ED0084825B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		B1BE5E55E6FAA61B62269F2B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -744,7 +768,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -833,6 +857,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8945457R7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProductsApp/Info.plist;
