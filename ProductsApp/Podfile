@@ -11,6 +11,8 @@ pod 'MaterialActivityIndicator'
 pod 'SwiftAlertView'
 pod 'Cosmos'
 pod 'AlamofireImage'
+pod 'Firebase/Crashlytics'
+pod 'Firebase/Analytics'
 
   target 'ProductsAppTests' do
     inherit! :search_paths
